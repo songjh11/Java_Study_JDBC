@@ -27,13 +27,11 @@ public class RegionsDAO {
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-		
 			int id = rs.getInt("REGION_ID");
 			String name = rs.getString("REGION_NAME");
 			System.out.println(id);
 			System.out.println(name);
-			
-	}
+				}
 	
 	
 	}
