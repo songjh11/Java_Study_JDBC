@@ -2,23 +2,21 @@ package com.iu.test;
 
 import java.sql.SQLException;
 
+import com.iu.regions.RegionsDAO;
 import com.iu.util.DBConnector;
 
 public class TestMain {
 
 	public static void main(String[] args) {
-		
-		DBConnector dbc = new DBConnector();
-		
+		RegionsDAO regionsDAO  = new RegionsDAO();
 		try {
-			dbc.getConnection();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
+			regionsDAO.getList();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		
 	}
 
