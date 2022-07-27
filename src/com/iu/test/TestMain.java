@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import com.iu.countries.CountriesDAO;
 import com.iu.countries.CountriesDTO;
 import com.iu.countries.CountriesView;
+import com.iu.employees.EmployeesDAO;
+import com.iu.employees.EmployeesDTO;
+import com.iu.employees.EmployeesView;
 import com.iu.regions.RegionsDAO;
 import com.iu.regions.RegionsDTO;
 import com.iu.regions.RegionsView;
@@ -18,6 +21,8 @@ public class TestMain {
 		CountriesDAO countriesDAO = new CountriesDAO();
 		RegionsView regionsView = new RegionsView();
 		CountriesView countriesView = new CountriesView();
+		EmployeesView employeesView = new EmployeesView();
+		EmployeesDAO employeesDAO = new EmployeesDAO();
 		
 		try {
 			RegionsDTO regionsDTO = regionsDAO.getDetail(2);
@@ -36,6 +41,8 @@ public class TestMain {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			EmployeesDTO employeesDTO = employeesDAO.
 		
 	}
 
