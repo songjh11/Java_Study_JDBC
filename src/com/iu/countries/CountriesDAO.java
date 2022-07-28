@@ -10,14 +10,28 @@ import com.iu.util.DBConnector;
 
 public class CountriesDAO {
 	
+	public int setCountry (CountriesDTO countriesDTO) throws Exception {
+		Connection con = DBConnector.getConnection();
+		String sql = "INSERT INTO COUNTRIES VALUES (?, ?, ?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, countriesDTO.getCountry_id());
+		st.setString(2, countriesDTO.getCountry_name());
+		st.setInt(3, countriesDTO.getRegion_id());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;		
+	}
+	
 	public CountriesDTO getDetail(String country_id) throws Exception {
 		CountriesDTO countriesDTO = null;
 		
 		Connection con = DBConnector.getConnection();
 		String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_ID=?";
+		//1.
+		//String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_ID='%'||?||'%'";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, country_id);
-		
+		//2.
+		st.setString(1, "%"+country_id+"%");
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {

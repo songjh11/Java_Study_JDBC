@@ -12,6 +12,19 @@ public class RegionsDAO {
 	
 	//1. Regions의 모든 데이터를 가져오기
 	//2. REGIONS에서 하나의 결과(Row) 가져오기
+	//3. Rrgions에 데이터 추가하기
+	public int setRegion(RegionsDTO regionsDTO) throws Exception{
+		Connection con = DBConnector.getConnection();
+		String sql = "INSERT INTO REGIONS VALUES(?, ?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, regionsDTO.getRegion_id());
+		st.setString(2, regionsDTO.getRegion_name());
+		int rs = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		
+		return rs;
+	}
 	public RegionsDTO getDetail(int region_id) throws Exception {
 		//1. DB연결
 		//2. Query문 작성
