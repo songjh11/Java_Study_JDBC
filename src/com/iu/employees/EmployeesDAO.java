@@ -9,6 +9,33 @@ import java.util.ArrayList;
 import com.iu.util.DBConnector;
 
 public class EmployeesDAO {
+	//1. DB연결
+	//2. SQL문 작성
+	//3. 미리 전송
+	//4. ? 세팅
+	//5. 전송 후 결과 처리
+	//6. 연결 해제
+	public void getJoinTest(EmployeesDTO employeesDTO) throws Exception {
+		Connection con = DBConnector.getConnection();
+		String sql = "select E.LAST_NAME, E.SALARY, D.DEPARTMENT_NAME "
+				+ "from employees E "
+				+ "     INNER JOIN "
+				+ "     departments D "
+				+ "     ON E.DEPARTMENT_ID = D.DEPARTMENT_ID "
+				+ "WHERE E.EMPLOYEE_ID = ? ";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setObject(1, employeesDTO.getEmployee_id());
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			employeesDTO = new EmployeesDTO();
+			employeesDTO.setLast_name(rs.getString("LAST_NAME"));
+			employeesDTO.setSalary(rs.getInt("SALARY"));
+			DepartmentsDTO dt = new DepartmentsDTO();
+			dt.setDepartment_name(rs.getString("DEPARTMENT_NAME"));
+				}
+		DBConnector.disConnect(rs, st, con);
+			}
+	
 	public void getSalaryInfo() throws Exception {
 		EmployeesDTO employeesDTO = null;
 		Connection con = DBConnector.getConnection();

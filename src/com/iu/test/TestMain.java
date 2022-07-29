@@ -48,22 +48,22 @@ public class TestMain {
 //			e.printStackTrace();
 //		}
 //		
-		try {
-			CountriesDTO countriesDTO = new CountriesDTO();
-			countriesDTO.setCountry_id("SE");
-			countriesDTO.setCountry_name("Sweden");
-			countriesDTO.setRegion_id(1);
-			int result = countriesDAO.setCountry(countriesDTO);
-			if(result>0) {
-				System.out.println("성공했습니다");
-			} else{
-				System.out.println("실패했습니다");
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			CountriesDTO countriesDTO = new CountriesDTO();
+//			countriesDTO.setCountry_id("SE");
+//			countriesDTO.setCountry_name("Sweden");
+//			countriesDTO.setRegion_id(1);
+//			int result = countriesDAO.setCountry(countriesDTO);
+//			if(result>0) {
+//				System.out.println("성공했습니다");
+//			} else{
+//				System.out.println("실패했습니다");
+//			}
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //			try {
 //				CountriesDTO countriesDTO = countriesDAO.getDetail("US");
 //				countriesView.view(countriesDTO);
